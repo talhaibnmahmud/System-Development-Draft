@@ -1,0 +1,157 @@
+.main {
+  --primary-color: #ea4c89;
+  --background-color: #fafafb;
+  --card-background: #cccccc;
+  --border-light: #e7e7e9;
+  --text-color: #3d3d4e;
+  --text-light: #6e6d7a;
+  --heading-color: #0d0c22;
+
+  width: 100%;
+  padding: 3rem 5rem;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 3rem;
+
+  .add {
+    padding: 1rem 1rem 1rem 0;
+
+    .house {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 2.5rem;
+      border: 1px solid var(--border-light);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      border-radius: 1rem;
+      background-color: var(--background-color);
+
+      .image {
+        img {
+          width: 100%;
+          max-height: 10rem;
+          object-fit: cover;
+        }
+      }
+
+      .about {
+        .heading {
+          .currency {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-color);
+          }
+
+          .price {
+            font-weight: 700;
+            font-size: 1.75rem;
+            line-height: 1.75rem;
+            color: var(--heading-color);
+          }
+        }
+
+        .details {
+          margin: 1rem 0;
+
+          > * {
+            margin: 0.35rem 0;
+          }
+
+          .address {
+            color: var(--text-color);
+          }
+
+          .type {
+            background-color: var(--card-background);
+            font-size: 0.8rem;
+            color: white;
+            display: inline-block;
+            padding: 0.15rem 0.25rem;
+            border-radius: 5rem;
+            user-select: none;
+          }
+
+          .description {
+            max-width: 50ch;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .feature {
+            display: flex;
+            color: var(--text-color);
+
+            > * {
+              margin-right: 1.25rem;
+            }
+          }
+        }
+
+        .contact {
+          .btn {
+            cursor: pointer;
+            border: 0;
+            border-radius: 0.3rem;
+            display: inline-block;
+            background: var(--primary-color);
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            overflow: hidden;
+            position: relative;
+          }
+
+          .btn:focus {
+            outline: none;
+          }
+
+          .btn:active {
+            outline: none;
+          }
+
+          .btn:active:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    padding: 1rem 0 1rem 1rem;
+
+    h3 {
+      font-size: 1.45rem;
+    }
+
+    .find-type {
+      margin: 1.5rem 0;
+      overflow: hidden;
+      border-radius: 0.25rem;
+
+      h4 {
+        background-color: var(--card-background);
+        color: var(--text-color);
+        font-size: 1.25rem;
+        margin: 0;
+        padding: 0.35rem 1rem;
+      }
+
+      .types {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--background-color);
+        padding: 0.5rem 1rem;
+
+        a {
+          padding: 0.35rem 0;
+        }
+      }
+    }
+  }
+}

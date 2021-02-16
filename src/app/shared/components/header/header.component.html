@@ -1,0 +1,19 @@
+<header>
+    <div class="logo">
+        <a href="/" class="logo">Rental BD</a>
+    </div>
+    <nav>
+        <ul #navLink>
+            <li class="nav-link"><a [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a></li>
+            <li class="nav-link"><a [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a></li>
+            <li class="nav-link"><a [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contact</a></li>
+            <li class="login"><a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a></li>
+            <li class="register"><a [routerLink]="['/register']" routerLinkActive="router-link-active">Register</a></li>
+        </ul>
+    </nav>
+    <div class="burger" #burger (click)="navSlide()">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </div>
+</header>
