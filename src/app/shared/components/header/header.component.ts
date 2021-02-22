@@ -1,5 +1,4 @@
 import { 
-  AfterViewInit,
   Component, 
   OnInit, 
   ViewChild
@@ -14,7 +13,6 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('burger') burger: any;
   @ViewChild('navLink') nav: any;
-  // @ViewChild('navLink') navLink: any;
 
   constructor() { }
 
