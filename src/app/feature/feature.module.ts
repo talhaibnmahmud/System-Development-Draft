@@ -4,13 +4,17 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { RouterModule } from '@angular/router';
+import { DetailComponent } from './components/detail/detail.component';
 
 
 
 @NgModule({
-  declarations: [PageNotFoundComponent, HomeComponent, AboutComponent, ContactComponent],
+  declarations: [PageNotFoundComponent, HomeComponent, AboutComponent, ContactComponent, DetailComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule
+  ],
+  exports: [RouterModule],
 })
 export class FeatureModule { }
