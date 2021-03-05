@@ -18,4 +18,5 @@ export class Houselist {
     description!: string;
     division!: number;
     district!: number;
+    created!: Date;
 }

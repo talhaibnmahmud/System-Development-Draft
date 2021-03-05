@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { Houselist } from 'src/app/helper/houselist';
+
+import { House } from 'src/app/helper/house';
 import { HouseService } from 'src/app/services/house.service';
+
 
 @Component({
   selector: 'app-detail',
@@ -12,8 +12,10 @@ import { HouseService } from 'src/app/services/house.service';
 })
 export class DetailComponent implements OnInit {
 
-  houseID!: number;
-  house!: Houselist;
+  houseID = -1;
+  divisionID = -1;
+  districtID = -1;
+  house: House | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,16 +24,25 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.houseID = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.houseID);
+    // console.log(this.houseID);
     this.houseDetail();
+    // this.division();
   }
-
+  
   houseDetail(): void {
     this.houseService.getHouseDetail(this.houseID).subscribe(
       data => {
-        this.house = data[0];
-        console.log(this.house);
+        this.house = {...data};
+        // console.log(data);
+        // console.log(this.house);
       }
     );
+  }
+
+  division(): void {
+    if (this.house) {
+      this.divisionID = Number(this.house.division);
+      console.log(this.divisionID);
+    }
   }
 }

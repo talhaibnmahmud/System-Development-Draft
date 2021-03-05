@@ -6,11 +6,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - install [NodeJS](https://nodejs.org/en/)
 - run `npm install -g @angular/cli` to install [Angular CLI](https://cli.angular.io/)
+- run `npm install` to install all the project dependencies. And you are good to go.
 
 ## Development server
 
 - Run `ng serve` for a dev server.
 - Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Or you can run `ng serve --open` to open it in the browser automatically.
 
 ## Code scaffolding
 
