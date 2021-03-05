@@ -15,12 +15,14 @@
   line-height: 1.5;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 
-  h1 {
+  h2 {
     color: var(--heading-color);
     font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
-  h2 {
+  h3 {
     color: var(--background-color);
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -37,11 +39,6 @@
       padding: 0;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
     .wrapper {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -54,7 +51,7 @@
       .company-info {
         background-color: var(--accent-hover);
 
-        h2,
+        h3,
         ul {
           margin-bottom: 1rem;
 
@@ -82,6 +79,10 @@
 
       .contact {
         background-color: var(--background-color);
+
+        h3 {
+          color: var(--heading-color);
+        }
 
         form {
           display: grid;
@@ -112,7 +113,7 @@
           }
 
           button {
-            background-color: var(--accent-hover);
+            background-color: var(--accent-color);
             border: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -121,8 +122,8 @@
             font-size: 115%;
             color: white;
 
-            &:hover {
-              background-color: var(--accent-color);
+            &:disabled {
+              background-color: var(--accent-hover);
               outline: 0;
               transition: all 0.4s ease;
             }

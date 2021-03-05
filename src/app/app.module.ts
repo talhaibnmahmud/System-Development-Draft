@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,14 +15,15 @@ import { FeatureModule } from './feature/feature.module';
     AppComponent,
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
+    CommonModule,
+    HttpClientModule,
     AppRoutingModule,
     SharedModule,
     AuthModule,
     FeatureModule
   ],
-  providers: [HouseService],
+  providers: [HouseService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

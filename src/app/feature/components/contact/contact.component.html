@@ -1,9 +1,9 @@
 <div class="main">
-    <section class="container">
-        <h1>Rental BD</h1>
+    <div class="container">
+        <h2>Rental BD</h2>
         <div class="wrapper">
           <section class="company-info">
-            <h2>Reach Us At</h2>
+            <h3>Reach Us At</h3>
             <ul>
               <li>
                 <i class="fas fa-address-card"></i>46/A
@@ -24,22 +24,23 @@
             </ul>
           </section>
           <section class="contact">
-            <h2>Contact Us</h2>
-            <form action="./contact.html" method="get">
+            <h3>Contact Us</h3>
+            <form #form="ngForm" (ngSubmit)="submitHandler(form)" [hidden]="success">
               <section>
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" required />
+                <input [(ngModel)]="name" type="text" name="name" id="name" required />
               </section>
               <section>
                 <label for="company">Company</label>
-                <input type="text" name="company" id="company" />
+                <input [(ngModel)]="company" type="text" name="company" id="company" />
               </section>
               <section>
-                <label for="mail">Email Address</label>
+                <label for="email">Email Address</label>
                 <input
+                  [(ngModel)]="email"
                   type="email"
-                  name="mail"
-                  id="mail"
+                  name="email"
+                  id="email"
                   placeholder="test@example.com"
                   required
                 />
@@ -47,6 +48,7 @@
               <section>
                 <label for="phone">Phone Number</label>
                 <input
+                  [(ngModel)]="phone"
                   type="tel"
                   name="phone"
                   id="phone"
@@ -56,17 +58,19 @@
               <section class="full">
                 <label for="message">Message</label>
                 <textarea
+                  [(ngModel)]="message"
                   name="message"
                   id="message"
                   cols="30"
                   rows="10"
+                  required
                 ></textarea>
               </section>
               <section class="full">
-                <button>Submit</button>
+                <button type="submit" [disabled]="form.invalid">Submit</button>
               </section>
             </form>
           </section>
         </div>
-    </section>
+    </div>
 </div>
