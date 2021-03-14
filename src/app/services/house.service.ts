@@ -4,19 +4,24 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import { House } from 'src/app/helper/house';
+import { District } from '../helper/district';
+import { Division } from '../helper/division';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HouseService {
-  private baseURL = 'http://127.0.0.1:8000/house/';
-  private divisionURL = 'http://127.0.0.1:8000/areas/division/';
+  private readonly baseURL = 'http://127.0.0.1:8000/house/';
+  private readonly divisionURL = 'http://127.0.0.1:8000/areas/division/';
+  private readonly districtURL = 'http://127.0.0.1:8000/areas/district/';
   // private detailURL = `${this.baseURL}house/`;
   private houselist: any;
   private houseDetail: any;
+  private divisionList: any;
   private division: any;
+  private districtList: any;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) { }
 
   getHouseList(): Observable<House[]> {
     this.houselist = this.httpClient.get(this.baseURL).pipe(
@@ -34,14 +39,24 @@ export class HouseService {
     this.houseDetail = this.httpClient.get(`${this.baseURL}${id}/`).pipe(
       // mergeMap((house: any)=> this.httpClient.get(`${this.divisionURL}${house.division}/`))
     );
-    this.division = this.httpClient.get(`${this.divisionURL}${this.houseDetail.division}/`);
-    // console.log(this.division);
     // console.log(this.houseDetail);
     return this.houseDetail;
   }
 
   getDivision(id: number): Observable<any> {
     return this.httpClient.get(`${this.divisionURL}${id}/`).pipe();
+  }
+
+  getAllDivisions(): Observable<Division[]> {
+    this.divisionList = this.httpClient.get(this.divisionURL).pipe();
+
+    return this.divisionList;
+  }
+
+  getAllDistricts(): Observable<District[]> {
+    this.districtList = this.httpClient.get(this.districtURL).pipe();
+
+    return this.districtList;
   }
 
   private handleError(error: HttpErrorResponse) {
