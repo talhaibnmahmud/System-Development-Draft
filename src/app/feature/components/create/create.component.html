@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="card m-5 p-3">
+        <div class="card-header">
+            <h3 class="card-title">Post an add</h3>
+            <small class="card-subtitle mb-2 text-muted">Feel up the details about your house</small>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="createHouseFormGroup" (ngSubmit)="onSubmit()">
+                <div formGroupName="address" class="mb-5">
+                    <div class="form-group">
+                        <label for="title">House Title</label>
+                        <input formControlName="title" type="text" class="form-control" id="title"
+                            aria-describedby="titleHelp" placeholder="Enter house title" required autofocus>
+                        <small id="titleHelp" class="form-text text-muted">Enter the title of your house
+                            advertise.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Address</label>
+                        <input formControlName="address" type="text" class="form-control" id="address"
+                            aria-describedby="addressHelp" placeholder="Enter house address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="inputDistrict">District</label>
+                            <select formControlName="district" id="inputDistrict" class="form-control" required>
+                                <option *ngFor="let district of districts |async" [ngValue]="district.id">
+                                    {{ district.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="inputDivision">Division</label>
+                            <select formControlName="division" id="inputDivision" class="form-control">
+                                <option *ngFor="let division of divisions |async" [ngValue]="division.id">
+                                    {{ division.name }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div formGroupName="about" class="mb-5">
+                    <div class="form-group">
+                        <label for="type">House Type</label>
+                        <select formControlName="type" id="type" class="form-control">
+                            <option selected>Apartment</option>
+                            <option>Duplex</option>
+                            <option>Triplex</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input formControlName="price" type="number" id="price" class="form-control" min="0"
+                            max="10,000,000" value="0">
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="area">Area &#40;in sqft&#41;</label>
+                            <input formControlName="area" type="number" id="area" class="form-control" min="0"
+                                max="100,000" value="0">
+                        </div>
+                        <div class="col">
+                            <label for="beds">Bedrooms</label>
+                            <input formControlName="bed" type="number" id="beds" class="form-control" min="0"
+                                max="10,000,000" value="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="baths">Showers</label>
+                            <input formControlName="shower" type="number" id="baths" class="form-control" min="0"
+                                max="10,000,000" value="0">
+                        </div>
+                        <div class="col">
+                            <label for="kitchen">Kitchen</label>
+                            <input formControlName="kitchen" type="number" id="kitchen" class="form-control" min="0"
+                                max="10,000,000" value="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="drawing">Drawing Rooms</label>
+                            <input formControlName="drawing" type="number" id="drawing" class="form-control" min="0"
+                                max="10" value="0">
+                        </div>
+                        <div class="col">
+                            <label for="dining">Dining Rooms</label>
+                            <input formControlName="dining" type="number" id="dining" class="form-control" min="0"
+                                max="10" value="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="parking_space">Parking Space</label>
+                            <input formControlName="parking" type="number" id="parking_space" class="form-control"
+                                min="0" max="10" value="0">
+                        </div>
+                        <div class="col">
+                            <label for="elevators">Elevators</label>
+                            <input formControlName="elevator" type="number" id="elevators" class="form-control" min="0"
+                                max="10" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col">
+                        <div class="form-check">
+                            <input type="checkbox" id="balcony" class="form-check-input">
+                            <label for="balcony" class="form-check-label">Balcony</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input type="checkbox" id="electricity_backup" class="form-check-input">
+                            <label for="electricity_backup" class="form-check-label">Electricity Backup</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input type="checkbox" id="service_elevator" class="form-check-input">
+                            <label for="service_elevator" class="form-check-label">Service Elevator</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Detailed Description</label>
+                    <textarea id="description" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary">
+                    <input type="reset" class="btn btn-secondary ml-3">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

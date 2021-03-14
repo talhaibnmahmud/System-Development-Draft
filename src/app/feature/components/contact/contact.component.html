@@ -1,76 +1,55 @@
 <div class="main">
-    <div class="container">
-        <h2>Rental BD</h2>
-        <div class="wrapper">
-          <section class="company-info">
-            <h3>Reach Us At</h3>
-            <ul>
-              <li>
-                <i class="fas fa-address-card"></i>46/A
-                Sankipara Cantonment Road, Mymensingh-2200.
-              </li>
-              <li>
-                <i class="fas fa-phone-alt"></i>(+880) 1XXX XX XX XX
-              </li>
-              <li>
-                <i class="fas fa-envelope"></i> 
-                <a href="mailto:admin@rentalbd.com">admin@rentalbd.com</a>
-              </li>
-              <li>
-                <i class="fab fa-facebook-square"></i>
-                <a href="">Rental BD</a
-                >
-              </li>
-            </ul>
+  <div class="container">
+    <h2>Rental BD</h2>
+    <div class="wrapper">
+      <section class="company-info">
+        <h3>Reach Us At</h3>
+        <ul>
+          <li>
+            <i class="fas fa-address-card"></i>46/A
+            Sankipara Cantonment Road, Mymensingh-2200.
+          </li>
+          <li>
+            <i class="fas fa-phone-alt"></i>(+880) 1XXX XX XX XX
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:admin@rentalbd.com">admin@rentalbd.com</a>
+          </li>
+          <li>
+            <i class="fab fa-facebook-square"></i>
+            <a href="">Rental BD</a>
+          </li>
+        </ul>
+      </section>
+      <section class="contact">
+        <h3>Contact Us</h3>
+        <form #form="ngForm" (ngSubmit)="submitHandler(form)" [hidden]="success">
+          <section>
+            <label for="name">Name</label>
+            <input [(ngModel)]="name" type="text" name="name" id="name" required />
           </section>
-          <section class="contact">
-            <h3>Contact Us</h3>
-            <form #form="ngForm" (ngSubmit)="submitHandler(form)" [hidden]="success">
-              <section>
-                <label for="name">Name</label>
-                <input [(ngModel)]="name" type="text" name="name" id="name" required />
-              </section>
-              <section>
-                <label for="company">Company</label>
-                <input [(ngModel)]="company" type="text" name="company" id="company" />
-              </section>
-              <section>
-                <label for="email">Email Address</label>
-                <input
-                  [(ngModel)]="email"
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="test@example.com"
-                  required
-                />
-              </section>
-              <section>
-                <label for="phone">Phone Number</label>
-                <input
-                  [(ngModel)]="phone"
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  placeholder="+880 1XXX XX XX XX"
-                />
-              </section>
-              <section class="full">
-                <label for="message">Message</label>
-                <textarea
-                  [(ngModel)]="message"
-                  name="message"
-                  id="message"
-                  cols="30"
-                  rows="10"
-                  required
-                ></textarea>
-              </section>
-              <section class="full">
-                <button type="submit" [disabled]="form.invalid">Submit</button>
-              </section>
-            </form>
+          <section>
+            <label for="company">Company</label>
+            <input [(ngModel)]="company" type="text" name="company" id="company" />
           </section>
-        </div>
+          <section>
+            <label for="email">Email Address</label>
+            <input [(ngModel)]="email" type="email" name="email" id="email" placeholder="test@example.com" required />
+          </section>
+          <section>
+            <label for="phone">Phone Number</label>
+            <input [(ngModel)]="phone" type="tel" name="phone" id="phone" placeholder="+880 1XXX XX XX XX" />
+          </section>
+          <section class="full">
+            <label for="message">Message</label>
+            <textarea [(ngModel)]="message" name="message" id="message" cols="30" rows="10" required></textarea>
+          </section>
+          <section class="full">
+            <button type="submit" [disabled]="form.invalid">Submit</button>
+          </section>
+        </form>
+      </section>
     </div>
+  </div>
 </div>

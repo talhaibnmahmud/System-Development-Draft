@@ -9,10 +9,10 @@ import { Contact } from '../helper/contact';
 })
 export class ContactService {
 
-  private contactURL = 'http://127.0.0.1:8000/contact/';
+  private readonly contactURL = 'http://127.0.0.1:8000/contact/';
   private contact: any;
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private readonly _httpClient: HttpClient) { }
 
   submitContact(form: any): Observable<Contact> {
     this.contact = this._httpClient.post(this.contactURL, form);
