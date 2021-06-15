@@ -4,6 +4,8 @@ import {
   ViewChild
 } from '@angular/core';
 
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,12 +16,13 @@ export class HeaderComponent implements OnInit {
   @ViewChild('burger') burger: any;
   @ViewChild('navLink') nav: any;
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngAfterVIewInit(): void {
   }
 
   ngOnInit(): void {
+    this.authService.checkLoggedIn();
   }
 
   navSlide(): void {

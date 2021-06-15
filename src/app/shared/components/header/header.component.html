@@ -1,14 +1,21 @@
-<header>
+<!-- <header>
     <div class="logo">
         <a [routerLink]="['/']" class="logo">Rental BD</a>
     </div>
     <nav>
         <ul #navLink>
-            <li class="nav-link"><a [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a></li>
-            <li class="nav-link"><a [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a></li>
-            <li class="nav-link"><a [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contact</a></li>
-            <li class="login"><a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a></li>
-            <li class="register"><a [routerLink]="['/register']" routerLinkActive="router-link-active">Register</a></li>
+            <li class="nav-link"><a [routerLink]="['/']" routerLinkActive="router-link-active">Home</a></li>
+            <li class="nav-link"><a [routerLink]="['/about']" routerLinkActive="router-link-active">About</a></li>
+            <li class="nav-link"><a [routerLink]="['/contact']" routerLinkActive="router-link-active">Contact</a></li>
+            <li [hidden]="authService.isLoggedIn" class="login">
+                <a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
+            </li>
+            <li [hidden]="authService.isLoggedIn" class="register">
+                <a [routerLink]="['/register']" routerLinkActive="router-link-active">Register</a>
+            </li>
+            <li [hidden]="!authService.isLoggedIn" class="logout">
+                <a [routerLink]="['/logout']" routerLinkActive="router-link-active">Logout</a>
+            </li>
         </ul>
     </nav>
     <div class="burger" #burger (click)="navSlide()">
@@ -16,4 +23,46 @@
         <div class="two"></div>
         <div class="three"></div>
     </div>
-</header>
+</header> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg">
+    <div class="container">
+        <a class="navbar-brand fs-2" [routerLink]="['/']">Rental BD</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item" *ngIf="authService.isLoggedIn else elseBlock">
+                    <a class="nav-link text-danger" [routerLink]="['/logout']" routerLinkActive="active">
+                        <i class="fas fa-sign-out-alt"></i>&nbsp;Log out
+                    </a>
+                </li>
+                <<ng-template #elseBlock>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" [routerLink]="['/login']" routerLinkActive="active">
+                            <i class="far fa-user"></i>&nbsp;Log in
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" [routerLink]="['/register']" routerLinkActive="active">
+                            <i class="fas fa-sign-in-alt"></i>&nbsp;Sign up
+                        </a>
+                    </li>
+                    </ng-template>
+            </ul>
+        </div>
+    </div>
+</nav>

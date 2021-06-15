@@ -1,69 +1,101 @@
-<div class="main">
-    <section class="add">
-        <div class="house" *ngFor="let house of houses |async">
-            <div class="image">
-                <figure>
-                    <picture>
-                        <!-- <source src="https://images.unsplash.com/photo-1499424258882-3fc11ba2e15e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80"> -->
-                        <img src="https://images.unsplash.com/photo-1499424258882-3fc11ba2e15e" alt="">
-                    </picture>
-                    <figcaption>
-                        {{ house.title }}
-                    </figcaption>
-                </figure>
+<div class="main" #main>
+    <div class="container">
+        <div class="pt-5 pb-3">
+            <div class="d-flex justify-content-end">
+                <form class="d-flex justify-content-end">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
-            <div class="about">
-                <div class="heading">
-                    <span class="currency">BDT</span>
-                    <span class="price"> {{ house.price |number}}</span>
-                </div>
-                <div class="details">
-                    <div class="address">
-                        <a [routerLink]="['/house', house.id]">{{ house.address }}</a>
+        </div>
+        <section class="add">
+            <div class="card border-0 my-3 bg-dark shadow-lg" *ngFor="let house of houses">
+                <!-- <div class="image">
+                    <figure>
+                        <picture>
+                            <img src="https://images.unsplash.com/photo-1499424258882-3fc11ba2e15e" alt=""
+                                class="card-img-top">
+                        </picture>
+                        <figcaption>
+                            {{ house.title }}
+                        </figcaption>
+                    </figure>
+                </div> -->
+                <!-- <div class="about">
+                    <div class="heading">
+                        <span class="currency">BDT</span>
+                        <span class="price"> {{ house.price |number}}</span>
                     </div>
-                    <div class="type">{{ house.type }}</div>
-                    <div class="description">
-                        {{ house.description }}
+                    <div class="details">
+                        <div class="address">
+                            <a [routerLink]="['/house', house.id]">{{ house.address }}</a>
+                        </div>
+                        <div class="type">{{ house.type }}</div>
+                        <div class="description">
+                            {{ house.description }}
+                        </div>
+                        <div class="feature">
+                            <div class="bed">
+                                <span> {{ house.beds }} </span>
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <div class="bath">
+                                <span> {{ house.baths }} </span>
+                                <i class="fas fa-bath"></i>
+                            </div>
+                            <div class="area">
+                                <i class="fas fa-th-large"></i>
+                                <span> {{ house.area |number}} sqft</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature">
-                        <div class="bed">
+                    <div class="contact">
+                        <button class="btn call">
+                            <i class="fas fa-phone-alt"></i>
+                            <span> Call </span>
+                        </button>
+                        <button class="btn email">
+                            <i class="fas fa-envelope"></i>
+                            <span> Email </span>
+                        </button>
+                    </div>
+                </div> -->
+
+                <div class="card-body">
+                    <h5 class="card-title text-white">{{ house.title }}</h5>
+                    <h6 class="card-subtitle text-white-50">{{ house.address }}</h6>
+
+                    <div class="d-flex text-white-50 my-3">
+                        <div class="pe-2">
                             <span> {{ house.beds }} </span>
                             <i class="fas fa-bed"></i>
                         </div>
-                        <div class="bath">
+                        <div class="px-2">
                             <span> {{ house.baths }} </span>
                             <i class="fas fa-bath"></i>
                         </div>
-                        <div class="area">
+                        <div class="ps-2">
                             <i class="fas fa-th-large"></i>
                             <span> {{ house.area |number}} sqft</span>
                         </div>
                     </div>
-                </div>
-                <div class="contact">
-                    <button class="btn call">
-                        <i class="fas fa-phone-alt"></i>
-                        <span> Call </span>
-                    </button>
-                    <button class="btn email">
-                        <i class="fas fa-envelope"></i>
-                        <span> Email </span>
-                    </button>
+
+                    <p class="card-text text-muted">{{ house.description }}</p>
+
+                    <a class="btn btn-primary" [routerLink]="['/house', house.id]">View Details</a>
                 </div>
             </div>
-        </div>
-    </section>
-    <aside class="sidebar">
-        <h3>What are you looking for &#63;</h3>
+        </section>
 
-        <div class="find-type">
-            <h4>House Type</h4>
-
-            <div class="types">
-                <a [routerLink]="['/apartment']" routerLinkActive="router-link-active">Apartment</a>
-                <a [routerLink]="['/duplex']" routerLinkActive="router-link-active">Duplex</a>
-                <a [routerLink]="['/triplex']" routerLinkActive="router-link-active">Triplex</a>
-            </div>
-        </div>
-    </aside>
+        <ul class="pagination justify-content-end mb-0 pb-3">
+            <li class="page-item" *ngIf="previous" [ngClass]="{'disabled': !previous}">
+                <button [disabled]="!previous" (click)="listHouse(previous); main.scrollTop = 0" class="page-link">
+                    Previous
+                </button>
+            </li>
+            <li class="page-item" *ngIf="next" [ngClass]="{'disabled': !next}">
+                <button [disabled]="!next" (click)="listHouse(next); main.scrollTop = 0" class="page-link">Next</button>
+            </li>
+        </ul>
+    </div>
 </div>

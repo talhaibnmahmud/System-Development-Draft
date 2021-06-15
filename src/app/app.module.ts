@@ -18,10 +18,10 @@ import { FeatureModule } from './feature/feature.module';
     BrowserModule,
     CommonModule,
     HttpClientModule,
-    AppRoutingModule,
     SharedModule,
     AuthModule,
-    FeatureModule
+    FeatureModule,
+    AppRoutingModule,
   ],
   providers: [HouseService,],
   bootstrap: [AppComponent]

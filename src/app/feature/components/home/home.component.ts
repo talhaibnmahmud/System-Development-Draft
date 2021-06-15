@@ -11,7 +11,9 @@ import { HouseService } from 'src/app/services/house.service';
 })
 export class HomeComponent implements OnInit {
   
-  houses: Observable<House[]> | null = null;
+  houses: House[] = [];
+  previous: string | null = null;
+  next: string | null = null;
   // houselist: any;
 
   constructor(private houseService: HouseService) { }
@@ -21,8 +23,27 @@ export class HomeComponent implements OnInit {
     this.listHouse();
   }
 
-  listHouse(): void {
-    this.houses = this.houseService.getHouseList();
+  listHouse(url?: string | null): void {
+    if(url) {
+      this.houseService.getHouseList(url).subscribe(
+        data => {
+          this.houses = data.results;
+          this.previous = data.previous;
+          this.next = data.next;
+          console.log(data);
+        }
+      );
+
+      return;
+    }
+    this.houseService.getHouseList().subscribe(
+      data => {
+        this.houses = data.results;
+        this.previous = data.previous;
+        this.next = data.next;
+        console.log(data);
+      }
+    );
   }
 
   // listHouse(): void {
