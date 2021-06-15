@@ -17,7 +17,7 @@ export interface House {
     electricity_backup: boolean;
     service_elevator: boolean;
     description: string;
-    division: number;
-    district: number;
+    division: number | string;
+    district: number | string;
     created: Date;
 }

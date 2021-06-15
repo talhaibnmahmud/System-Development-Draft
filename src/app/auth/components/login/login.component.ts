@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Token } from 'src/app/helper/token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +19,10 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-              private fb: FormBuilder,
-              private authService: AuthService) { }
+    private readonly authService: AuthService,
+    private readonly fb: FormBuilder,
+    private readonly router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -33,8 +36,10 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(username, password).subscribe(
       data => {
-        this.credentials = {...data};
+        this.credentials = { ...data };
         this.setCredentials(this.credentials);
+
+        this.router.navigate(['']);
       }
     );
   }

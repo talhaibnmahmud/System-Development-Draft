@@ -11,11 +11,14 @@ import { RouterModule } from '@angular/router';
 import { DetailComponent } from './components/detail/detail.component';
 import { ContactService } from '../services/contact.service';
 import { CreateComponent } from './components/create/create.component';
+import { UpdateComponent } from './components/update/update.component';
+import { DeleteComponent } from './components/delete/delete.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
 @NgModule({
-  declarations: [PageNotFoundComponent, HomeComponent, AboutComponent, ContactComponent, DetailComponent, CreateComponent],
+  declarations: [PageNotFoundComponent, HomeComponent, AboutComponent, ContactComponent, DetailComponent, CreateComponent, UpdateComponent, DeleteComponent, SearchComponent, ],
   imports: [
     BrowserModule,
     CommonModule,

@@ -1,9 +1,9 @@
-<div class="main">
-    <div class="container-fluid">
-        <table class="table table-dark table-hover table-bordered" *ngIf="house">
+<div class="container bg-dark">
+    <div class="py-5">
+        <table class="table table-dark table-hover table-striped" *ngIf="house">
             <thead class="thead-dark">
-                <th>Feature</th>
-                <th>Details</th>
+                <th scope="col"> Feature</th>
+                <th scope="col"> Details</th>
             </thead>
             <tbody>
                 <tr>
@@ -52,12 +52,12 @@
                 </tr>
                 <tr>
                     <td>Parking Space</td>
-                    <td *ngIf="house.parking_space" >{{ house.elevators |number }}</td>
+                    <td *ngIf="house.parking_space">{{ house.elevators |number }}</td>
                     <td *ngIf="!house.parking_space">❌</td>
                 </tr>
                 <tr>
                     <td>Elevators</td>
-                    <td *ngIf="house.elevators" >{{ house.elevators |number }}</td>
+                    <td *ngIf="house.elevators">{{ house.elevators |number }}</td>
                     <td *ngIf="!house.elevators">❌</td>
                 </tr>
                 <tr>
