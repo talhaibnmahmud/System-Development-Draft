@@ -89,5 +89,10 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="mt-5" *ngIf="house">
+            <a class="btn btn-info" [routerLink]="['/update', houseID]">Edit</a>
+            <a class="btn btn-warning ms-3" [routerLink]="['/delete', houseID]">Delete</a>
+        </div>
     </div>
 </div>

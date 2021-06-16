@@ -10,9 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  socialSignIn = false;
-
-  registerForm = this.fb.group({
+  registerForm = this._fb.group({
     firstName: ['', [Validators.required, Validators.minLength(2)]],
     lastName: ['', [Validators.required, Validators.minLength(2)]],
     username: ['', [Validators.required, Validators.minLength(2)]],
@@ -21,9 +19,9 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(
-    private readonly authService: AuthService,
-    private readonly fb: FormBuilder,
-    private readonly router: Router
+    private readonly _authService: AuthService,
+    private readonly _fb: FormBuilder,
+    private readonly _router: Router,
   ) { }
 
   ngOnInit(): void {

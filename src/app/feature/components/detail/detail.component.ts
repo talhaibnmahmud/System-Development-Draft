@@ -18,21 +18,21 @@ export class DetailComponent implements OnInit {
   house: House | null = null;
 
   constructor(
-    private route: ActivatedRoute,
-    private houseService: HouseService
+    private readonly _route: ActivatedRoute,
+    private readonly _houseService: HouseService
   ) { }
 
   ngOnInit(): void {
-    this.houseID = Number(this.route.snapshot.paramMap.get('id'));
+    this.houseID = Number(this._route.snapshot.paramMap.get('id'));
     // console.log(this.houseID);
     this.houseDetail();
     // this.division();
   }
-  
+
   houseDetail(): void {
-    this.houseService.getHouseDetail(this.houseID).subscribe(
+    this._houseService.getHouseDetail(this.houseID).subscribe(
       data => {
-        this.house = {...data};
+        this.house = { ...data };
         // console.log(data);
         // console.log(this.house);
       }
@@ -42,7 +42,7 @@ export class DetailComponent implements OnInit {
   division(): void {
     if (this.house) {
       this.divisionID = Number(this.house.division);
-      console.log(this.divisionID);
+      // console.log(this.divisionID);
     }
   }
 }
