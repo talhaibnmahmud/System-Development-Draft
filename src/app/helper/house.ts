@@ -1,6 +1,6 @@
 export interface House {
     id: number;
-    owner: number;
+    owner: boolean;
     title: string;
     address: string;
     price: number;

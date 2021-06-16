@@ -16,26 +16,24 @@ export class CreateComponent implements OnInit {
   createHouseFormGroup: FormGroup = new FormGroup({});
   form: any;
 
-  // divisions: Observable<Division[]> | undefined;
-  // districts: Observable<District[]> | undefined;
   relatedDistricts: any[] = [];
   divisions: any[] = [];
   districtst: any[] = [];
 
   constructor(
-    private formBuilder: FormBuilder,
-    private houseService: HouseService
+    private readonly _formBuilder: FormBuilder,
+    private readonly _houseService: HouseService,
   ) { }
 
   ngOnInit(): void {
-    this.createHouseFormGroup = this.formBuilder.group({
-      address: this.formBuilder.group({
+    this.createHouseFormGroup = this._formBuilder.group({
+      address: this._formBuilder.group({
         title: ['', [Validators.required, Validators.maxLength(100)]],
         address: ['', [Validators.required, Validators.maxLength(100)]],
         district: [0, [Validators.required]],
         division: [0,],
       }),
-      about: this.formBuilder.group({
+      about: this._formBuilder.group({
         type: ['Apartment'],
         price: this.validation(0, 10000000),
         area: this.validation(0, 100000),
@@ -47,12 +45,12 @@ export class CreateComponent implements OnInit {
         parking_space: this.validation(0),
         elevators: this.validation(0),
       }),
-      features: this.formBuilder.group({
+      features: this._formBuilder.group({
         balcony: false,
         electricity_backup: false,
         service_elevator: false,
       }),
-      description: this.formBuilder.group({
+      description: this._formBuilder.group({
         description: ['', Validators.maxLength(300)],
       }),
     });
@@ -77,7 +75,7 @@ export class CreateComponent implements OnInit {
   }
 
   private listAreas() {
-    this.houseService.getAreas().subscribe(
+    this._houseService.getAreas().subscribe(
       data => {
         for (const [key, value] of Object.entries(data)) {
           this.divisions.push(key);
@@ -101,11 +99,12 @@ export class CreateComponent implements OnInit {
     // console.log(this.createHouseFormGroup.get('features')?.value);
     // console.log(this.createHouseFormGroup.get('description')?.value);
     // console.log(this.createHouseFormGroup.value);
-    console.table(this.form);
-    console.log(this.createHouseFormGroup.valid);
+
+    // console.table(this.form);
+    // console.log(this.createHouseFormGroup.valid);
 
     if (this.createHouseFormGroup.valid) {
-      this.houseService.createHouse(this.form).subscribe(
+      this._houseService.createHouse(this.form).subscribe(
         data => console.log(data)
       );
     }

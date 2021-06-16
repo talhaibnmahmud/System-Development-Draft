@@ -1,1 +1,145 @@
-<p>update works!</p>
+<div class="container">
+    <div class="py-5">
+        <div class="card p-3 bg-dark shadow-lg" *ngIf="house">
+            <div class="card-header">
+                <h3 class="card-title text-white">Post an add</h3>
+                <small class="card-subtitle mb-2 text-muted">Feel up the details about your house</small>
+            </div>
+
+            <div class="card-body">
+                <form [formGroup]="updateHouseFormGroup" (ngSubmit)="onSubmit()">
+                    <div formGroupName="address" class="mb-5">
+                        <div class="form-group">
+                            <label for="title" class="text-white-50 mb-1">House Title</label>
+                            <input formControlName="title" type="text" class="form-control" id="title" [minlength]="3"
+                                [maxlength]="100" aria-describedby="titleHelp" required autofocus>
+                            <small id="titleHelp" class="form-text text-muted">
+                                Enter the title of your house advertise.
+                            </small>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="inputDivision" class="text-white-50 my-1">Division</label>
+                                <select formControlName="division" id="inputDivision" class="form-control">
+                                    <option *ngFor="let division of divisions; index as i" [ngValue]="i + 1">
+                                        {{ division }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="inputDistrict" class="text-white-50 my-1">District</label>
+                                <select formControlName="district" id="inputDistrict" class="form-control" required>
+                                    <option *ngFor="let district of districtst" [ngValue]="district[1]">
+                                        {{ district[0] }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="text-white-50 my-1">Address</label>
+                            <input formControlName="address" type="text" class="form-control" id="address"
+                                [minlength]="3" [maxlength]="100" aria-describedby="addressHelp"
+                                placeholder="Enter house address" required>
+                        </div>
+                    </div>
+                    <div formGroupName="about" class="mb-5">
+                        <div class="form-group">
+                            <label for="type" class="text-white-50 my-1">House Type</label>
+                            <select formControlName="type" id="type" class="form-control">
+                                <option selected>Apartment</option>
+                                <option>Duplex</option>
+                                <option>Triplex</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="price" class="text-white-50 my-1">Price</label>
+                            <input formControlName="price" type="number" id="price" class="form-control" min="0"
+                                max="10,000,000" value="0">
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="area" class="text-white-50 my-1">Area &#40;in sqft&#41;</label>
+                                <input formControlName="area" type="number" id="area" class="form-control" min="0"
+                                    max="100,000" value="0">
+                            </div>
+                            <div class="col">
+                                <label for="beds" class="text-white-50 my-1">Bedrooms</label>
+                                <input formControlName="beds" type="number" id="beds" class="form-control" min="0"
+                                    max="10,000,000" value="0">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="baths" class="text-white-50 my-1">Showers</label>
+                                <input formControlName="baths" type="number" id="baths" class="form-control" min="0"
+                                    max="10,000,000" value="0">
+                            </div>
+                            <div class="col">
+                                <label for="kitchen" class="text-white-50 my-1">Kitchen</label>
+                                <input formControlName="kitchen" type="number" id="kitchen" class="form-control" min="0"
+                                    max="10,000,000" value="0">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="drawing" class="text-white-50 my-1">Drawing Rooms</label>
+                                <input formControlName="drawing" type="number" id="drawing" class="form-control" min="0"
+                                    max="10" value="0">
+                            </div>
+                            <div class="col">
+                                <label for="dining" class="text-white-50 my-1">Dining Rooms</label>
+                                <input formControlName="dining" type="number" id="dining" class="form-control" min="0"
+                                    max="10" value="0">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="parking_space" class="text-white-50 my-1">Parking Space</label>
+                                <input formControlName="parking_space" type="number" id="parking_space"
+                                    class="form-control" min="0" max="10" value="0">
+                            </div>
+                            <div class="col">
+                                <label for="elevators" class="text-white-50 my-1">Elevators</label>
+                                <input formControlName="elevators" type="number" id="elevators" class="form-control"
+                                    min="0" max="10" value="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div formGroupName="features" class="form-row mb-3">
+                        <div class="col">
+                            <div class="form-check">
+                                <input formControlName="balcony" type="checkbox" id="balcony" class="form-check-input">
+                                <label for="balcony" class="form-check-label text-white-50 mb-1">Balcony</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input formControlName="electricity_backup" type="checkbox" id="electricity_backup"
+                                    class="form-check-input">
+                                <label for="electricity_backup" class="form-check-label text-white-50 mb-1">Electricity
+                                    Backup</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input formControlName="service_elevator" type="checkbox" id="service_elevator"
+                                    class="form-check-input">
+                                <label for="service_elevator" class="form-check-label text-white-50 mb-1">Service
+                                    Elevator</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div formGroupName="description" class="form-group">
+                        <label for="description" class="text-white-50 mb-1">Detailed Description</label>
+                        <textarea formControlName="description" id="description" class="form-control"
+                            rows="5"></textarea>
+                    </div>
+                    <div class="form-group mt-5">
+                        <input type="submit" class="btn btn-success">
+                        <input type="reset" class="btn btn-warning ms-3">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

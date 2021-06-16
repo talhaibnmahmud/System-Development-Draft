@@ -13,15 +13,15 @@ export class LoginComponent implements OnInit {
 
   private credentials: Token | undefined;
 
-  loginForm = this.fb.group({
+  loginForm = this._fb.group({
     username: ['', [Validators.required, Validators.minLength(2)]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   constructor(
-    private readonly authService: AuthService,
-    private readonly fb: FormBuilder,
-    private readonly router: Router
+    private readonly _authService: AuthService,
+    private readonly _fb: FormBuilder,
+    private readonly _router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -34,12 +34,12 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
 
-    this.authService.login(username, password).subscribe(
+    this._authService.login(username, password).subscribe(
       data => {
         this.credentials = { ...data };
         this.setCredentials(this.credentials);
 
-        this.router.navigate(['']);
+        this._router.navigate(['']);
       }
     );
   }

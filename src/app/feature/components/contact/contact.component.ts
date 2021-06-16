@@ -19,7 +19,7 @@ export class ContactComponent implements OnInit {
   phone = '';
   message = '';
 
-  constructor(private _contactService: ContactService) { }
+  constructor(private readonly _contactService: ContactService) { }
 
   ngOnInit(): void {
   }

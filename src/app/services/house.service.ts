@@ -15,7 +15,7 @@ export class HouseService {
   private readonly areasURL = 'http://127.0.0.1:8000/areas/all/';
   private readonly divisionURL = 'http://127.0.0.1:8000/areas/division/';
   private readonly districtURL = 'http://127.0.0.1:8000/areas/district/';
-  // private detailURL = `${this.baseURL}house/`;
+
   private houselist: any;
   private houseDetail: any;
   private areas: any;
@@ -28,7 +28,7 @@ export class HouseService {
   getHouseList(url?: string | null): Observable<any> {
     const limit = 5;
 
-    if(url) {
+    if (url) {
       this.houselist = this.httpClient.get(url).pipe(
         retry(3),
         // map(),
@@ -44,24 +44,52 @@ export class HouseService {
     );
 
     return this.houselist;
-    // return this.httpClient.get<GetResponse>(this.baseURL).pipe(
-    //   map(response => response.houses),
-    // );
   }
 
   getHouseDetail(id: number): Observable<House> {
     this.houseDetail = this.httpClient.get(`${this.baseURL}${id}/`).pipe(
-      // mergeMap((house: any)=> this.httpClient.get(`${this.divisionURL}${house.division}/`))
     );
-    // console.log(this.houseDetail);
     return this.houseDetail;
   }
 
   createHouse(form: any): Observable<House> {
     const token = localStorage.getItem('token');
-    this.houseDetail = this.httpClient.post(this.baseURL, form, {headers: {'Authorization': `Token ${token}`}});
+    this.houseDetail = this.httpClient.post(this.baseURL, form, { headers: { 'Authorization': `Token ${token}` } });
 
     return this.houseDetail;
+  }
+
+  updateHouse(id: number, form: any): Observable<House> {
+    const url = `${this.baseURL}${id}/`;
+    const token = localStorage.getItem('token');
+    this.houseDetail = this.httpClient.patch(url, form, { headers: { 'Authorization': `Token ${token}` } });
+
+    return this.houseDetail;
+  }
+
+  deleteHouse(id: number): Observable<{}> {
+    const url = `${this.baseURL}${id}/`;
+    const token = localStorage.getItem('token');
+
+    return this.httpClient.delete(url, { headers: { 'Authorization': `Token ${token}` } });
+  }
+
+  searchHouse(query: string | null): Observable<any> {
+    const searchURL = `${this.baseURL}?search=${query}`;
+
+    return this.httpClient.get(searchURL).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  advancedSearch(): Observable<any> {
+    const searchURL = `${this.baseURL}?`;
+
+    return this.httpClient.get(searchURL).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   getAreas(): Observable<any> {
